@@ -1,5 +1,7 @@
+require "./nameable.rb"
+
 # Class Person
-class Person
+class Person < Nameable
   attr_accessor :name, :age
   attr_reader :id
 
@@ -8,6 +10,10 @@ class Person
     @name = name
     @age = age
     @parent_permession = parent_permession
+  end
+
+  def correct_name
+    @name
   end
 
   def can_use_services?
@@ -20,3 +26,10 @@ class Person
     @age >= 18
   end
 end
+
+person = Person.new(22, 'maximilianus')
+puts person.correct_name
+capitalizedPerson = Capitalize_Decorator.new(person)
+puts capitalizedPerson.correct_name
+capitalizedTrimmedPerson = Trimmer_Decorator.new(capitalizedPerson)
+puts capitalizedTrimmedPerson.correct_name
