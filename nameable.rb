@@ -16,3 +16,14 @@ class Decorator < Nameable
   end
 end
 
+class Capitalize_Decorator < Decorator
+  def correct_name
+     @nameable.correct_name.split.map(&:capitalize).join(' ')
+  end
+end
+
+class Trimmer_Decorator < Decorator
+  def correct_name
+     @nameable.correct_name.strip
+  end
+end
