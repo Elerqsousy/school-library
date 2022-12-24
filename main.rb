@@ -66,12 +66,12 @@ def create_rental(library)
   puts 'Select a book from the following list by number:'
   library.list_books(true)
   book_id = gets.chomp.to_i
-  (book_id < 1) || (book_id > library.books.length) && error(:create_rental, library)
+  (book_id < 1 || book_id > library.books.length) && error(:create_rental, library)
 
   puts ' Select a person from the following list by number'
   library.list_people(true)
   person_id = gets.chomp.to_i
-  (person_id < 1) || (person_id > library.people.length) && error(:create_rental, library)
+  (person_id < 1 || person_id > library.people.length) && error(:create_rental, library)
 
   print 'Date: '
   date = gets.chomp
@@ -91,7 +91,7 @@ def list_rentals(library)
   choices(library)
 end
 
-def choices(library)
+def list_options
   entry = "\nPelase choose an option by entring a number:
   1 - List all books
   2 - List all people
@@ -102,6 +102,10 @@ def choices(library)
   7 - Exit"
 
   puts entry
+end
+
+def choices(library)
+  list_options()
   input = gets.chomp.to_i
 
   case input
@@ -121,8 +125,6 @@ def choices(library)
     # *Have a way to quit the app.
     puts 'Thank you for using this app!'
     abort
-  else
-    error(:choices, library)
   end
 end
 
