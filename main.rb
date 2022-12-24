@@ -4,94 +4,95 @@ def wlecome
   puts 'Welcome to the School Library App!'
 end
 
+def error(func, library)
+  puts "Error! Please enter a valid number.\nPress ENTER to continue."
+  gets.chomp
+  method(func).call(library)
+end
+
+def list_books(library)
+  library.list_books(false)
+  choices(library)
+end
+
+def list_people(library)
+  library.list_people(false)
+  choices(library)
+end
+
+def create_person(library)
+  print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
+  choice = gets.chomp.to_i
+
+  choice > 2 && error(:create_person, library)
+
+  print 'Age: '
+  age = gets.chomp.to_i
+
+  print 'Name: '
+  name = gets.chomp
+
+  if choice == 1
+    print 'Has parent Premession? (y/n): '
+    pm = gets.chomp
+
+    library.add_person(1, age, name, pm == 'y')
+
+  else
+    print 'Specialization: '
+    spec = gets.chomp
+
+    library.add_person(2, age, name, spec)
+  end
+
+  puts 'Person added Successfully.'
+  choices(library)
+end
+
+def create_book(library)
+  print 'Title: '
+  title = gets.chomp
+
+  print 'Author: '
+  author = gets.chomp
+
+  library.add_book(title, author)
+
+  puts 'Book created Successfully!'
+  choices(library)
+end
+
+def create_rental(library)
+  puts 'Select a book from the following list by number:'
+  library.list_books(true)
+  book_id = gets.chomp.to_i
+  book_id < 1 || book_id > library.books.length && error(:create_rental, library)
+
+  puts ' Select a person from the following list by number'
+  library.list_people(true)
+  person_id = gets.chomp.to_i
+  person_id < 1 || person_id > library.people.length && error(:create_rental, library)
+
+  print 'Date: '
+  date = gets.chomp
+
+  library.create_rental(book_id - 1, person_id - 1, date)
+
+  puts 'Rental created Successfully!'
+  choices(library)
+end
+
+def list_rentals(library)
+  library.list_people(false)
+  print 'ID of Person: '
+  id = gets.chomp.to_i
+
+  library.list_person_rentals(id)
+  choices(library)
+end
+
 def main
   library = App.new
-  def error(func, library)
-    puts "Error! Please enter a valid number.\nPress ENTER to continue."
-    gets.chomp
-    method(func).call(library)
-  end
-
-  def list_books(library)
-    library.list_books(false)
-    choices(library)
-  end
-
-  def list_people(library)
-    library.list_people(false)
-    choices(library)
-  end
-
-  def create_person(library)
-    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
-    choice = gets.chomp.to_i
-
-    choice > 2 && error(:create_person, library)
-
-    print 'Age: '
-    age = gets.chomp.to_i
-
-    print 'Name: '
-    name = gets.chomp
-
-    if choice == 1
-      print 'Has parent Premession? (y/n): '
-      pm = gets.chomp
-
-      library.add_person(1, age, name, pm == 'y')
-
-    else
-      print 'Specialization: '
-      spec = gets.chomp
-
-      library.add_person(2, age, name, spec)
-    end
-
-    puts 'Person added Successfully.'
-    choices(library)
-  end
-
-  def create_book(library)
-    print 'Title: '
-    title = gets.chomp
-
-    print 'Author: '
-    author = gets.chomp
-
-    library.add_book(title, author)
-
-    puts 'Book created Successfully!'
-    choices(library)
-  end
-
-  def create_rental(library)
-    puts 'Select a book from the following list by number:'
-    library.list_books(true)
-    book_id = gets.chomp.to_i
-    book_id < 1 || book_id > library.books.length && error(:create_rental, library)
-
-    puts ' Select a person from the following list by number'
-    library.list_people(true)
-    person_id = gets.chomp.to_i
-    person_id < 1 || person_id > library.people.length && error(:create_rental, library)
-
-    print 'Date: '
-    date = gets.chomp
-
-    library.create_rental(book_id - 1, person_id - 1, date)
-
-    puts 'Rental created Successfully!'
-    choices(library)
-  end
-
-  def list_rentals(library)
-    library.list_people(false)
-    print 'ID of Person: '
-    id = gets.chomp.to_i
-
-    library.list_person_rentals(id)
-    choices(library)
-  end
 
   def choices(library)
     entry = "\nPelase choose an option by entring a number:\n1 - List all books\n2 - List all people\n3 - Create a person\n4 - Create a book\n5 - Create a rental\n6 - List all rentals for a given person id\n7 - Exit"
