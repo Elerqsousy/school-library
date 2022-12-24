@@ -11,6 +11,7 @@
 - [📖 About the Project](#about-project)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
+    - [Key Features](#key-features)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -39,6 +40,15 @@
 </details>
 
 <p align="right"><a href="#readme-top">back to top</a></p>
+
+
+
+### Key Features <a name="key-features"></a>
+
+- **This project manages a scholl library and rentals**
+- **This project is easily managed through the UI interface**
+- **This project is interconnected through using OOP**
+
 
 
 <!-- GETTING STARTED -->
