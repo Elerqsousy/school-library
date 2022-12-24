@@ -18,6 +18,7 @@
   - [Install](#install)
   - [Usage](#usage)
 - [👥 Authors](#authors)
+- [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
@@ -106,6 +107,15 @@ Example command:
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
+
+## 🔭 Future Features <a name="future-features"></a>
+
+- **Add basic UI**
+- **Preserve data**
+- **Unit tests**
+- **Web User Interface**
+
+<p align="right"><a href="#readme-top">back to top</a></p>
 
 <!-- CONTRIBUTING -->
 
