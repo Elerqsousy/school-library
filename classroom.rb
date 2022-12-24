@@ -10,6 +10,6 @@ class Classroom
 
   def add_student(student)
     @students.push(student)
-    student.set_classroom(self)
+    student.modify_classroom(self)
   end
 end
