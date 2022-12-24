@@ -2,7 +2,7 @@ require './person'
 
 # Class Teacher inhereting from Person Class
 class Teacher < Person
-  def initialize(age, specialization, name = 'Unknown')
+  def initialize(age, name, specialization)
     super(age, name, true)
     @specialization = specialization
   end
