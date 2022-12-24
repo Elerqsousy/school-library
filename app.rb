@@ -12,7 +12,7 @@ class App
 
   def list_books(with_index)
     @books.each_with_index do |book, i|
-      indexing = with_index ? "#{(i + 1).to_s}) " : ""
+      indexing = with_index ? "#{i + 1}) " : ''
       puts "#{indexing}title: #{book.title}, author: #{book.author}"
     end
   end
@@ -22,27 +22,26 @@ class App
   end
 
   def add_student(age, name, parent_permession)
-    @people << {type: "Student", data: Student.new(age, name, parent_permession)}
-
+    @people << { type: 'Student', data: Student.new(age, name, parent_permession) }
   end
 
   def add_teacher(age, name, specialization)
-    @people << {type: "Teacher", data: Teacher.new(age, name, specialization)}
+    @people << { type: 'Teacher', data: Teacher.new(age, name, specialization) }
   end
 
   def add_person(type, age, name, third_param)
     case type
-    when(1)
+    when 1
       add_student(age, name, third_param)
-    when(2)
+    when 2
       add_teacher(age, name, third_param)
     end
   end
 
   def list_people(with_index)
     @people.each_with_index do |person, i|
-      indexing = with_index ? "#{(i + 1).to_s})" : ""
-      id =  with_index ? "" : " id: #{person[:data].id},"
+      indexing = with_index ? "#{i + 1})" : ''
+      id = with_index ? '' : " id: #{person[:data].id},"
       puts "#{indexing}[#{person[:type]}]#{id} age: #{person[:data].age}, name: #{person[:data].name}"
     end
   end
@@ -52,7 +51,7 @@ class App
   end
 
   def find_person(person_id)
-    @people.find {|person| person[:data].id == person_id}
+    @people.find { |person| person[:data].id == person_id }
   end
 
   def list_person_rentals(id)

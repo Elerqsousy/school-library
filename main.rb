@@ -1,13 +1,11 @@
 require_relative './app'
 
 def wlecome
-  puts "Welcome to the School Library App!"
+  puts 'Welcome to the School Library App!'
 end
 
-
-
 def main
-  library = App.new()
+  library = App.new
   def error(func, library)
     puts "Error! Please enter a valid number.\nPress ENTER to continue."
     gets.chomp
@@ -25,70 +23,70 @@ def main
   end
 
   def create_person(library)
-    print "Do you want to create a student (1) or a teacher (2)? [Input the number]: "
+    print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
     choice = gets.chomp.to_i
 
     choice > 2 && error(:create_person, library)
 
-    print "Age: "
+    print 'Age: '
     age = gets.chomp.to_i
 
-    print "Name: "
+    print 'Name: '
     name = gets.chomp
 
     if choice == 1
-      print "Has parent Premession? (y/n): "
+      print 'Has parent Premession? (y/n): '
       pm = gets.chomp
 
       library.add_person(1, age, name, pm == 'y')
 
     else
-      print "Specialization: "
+      print 'Specialization: '
       spec = gets.chomp
 
       library.add_person(2, age, name, spec)
     end
 
-    puts "Person added Successfully."
+    puts 'Person added Successfully.'
     choices(library)
   end
 
   def create_book(library)
-    print "Title: "
+    print 'Title: '
     title = gets.chomp
 
-    print "Author: "
+    print 'Author: '
     author = gets.chomp
 
     library.add_book(title, author)
 
-    puts "Book created Successfully!"
+    puts 'Book created Successfully!'
     choices(library)
   end
 
   def create_rental(library)
-    puts "Select a book from the following list by number:"
+    puts 'Select a book from the following list by number:'
     library.list_books(true)
     book_id = gets.chomp.to_i
     book_id < 1 || book_id > library.books.length && error(:create_rental, library)
 
-    puts " Select a person from the following list by number"
+    puts ' Select a person from the following list by number'
     library.list_people(true)
     person_id = gets.chomp.to_i
     person_id < 1 || person_id > library.people.length && error(:create_rental, library)
 
-    print "Date: "
+    print 'Date: '
     date = gets.chomp
 
     library.create_rental(book_id - 1, person_id - 1, date)
 
-    puts "Rental created Successfully!"
+    puts 'Rental created Successfully!'
     choices(library)
   end
 
   def list_rentals(library)
     library.list_people(false)
-    print "ID of Person: "
+    print 'ID of Person: '
     id = gets.chomp.to_i
 
     library.list_person_rentals(id)
@@ -101,21 +99,21 @@ def main
     input = gets.chomp.to_i
 
     case input
-    when(1)
+    when 1
       list_books(library)
-    when(2)
+    when 2
       list_people(library)
-    when(3)
+    when 3
       create_person(library)
-    when(4)
+    when 4
       create_book(library)
-    when(5)
+    when 5
       create_rental(library)
-    when(6)
+    when 6
       list_rentals(library)
-    when(7)
+    when 7
       # *Have a way to quit the app.
-      puts "Thank you for using this app!"
+      puts 'Thank you for using this app!'
       abort
     else
       error(:choices, library)
@@ -125,5 +123,5 @@ def main
   choices(library)
 end
 
-wlecome()
-main()
+wlecome
+main
