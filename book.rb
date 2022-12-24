@@ -1,4 +1,4 @@
-require "./rental.rb"
+require './rental'
 
 # class Book
 class Book
@@ -14,5 +14,3 @@ class Book
     Rental.new(self, person, date)
   end
 end
-
-
