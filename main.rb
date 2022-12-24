@@ -105,7 +105,7 @@ def list_options
 end
 
 def choices(library)
-  list_options()
+  list_options
   input = gets.chomp.to_i
 
   case input
@@ -121,11 +121,9 @@ def choices(library)
     create_rental(library)
   when 6
     list_rentals(library)
-  when 7
-    # *Have a way to quit the app.
-    puts 'Thank you for using this app!'
-    abort
   end
+  # *Have a way to quit the app.
+  puts 'Thank you for using this app!'
 end
 
 def main
