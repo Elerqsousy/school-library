@@ -66,12 +66,12 @@ def create_rental(library)
   puts 'Select a book from the following list by number:'
   library.list_books(true)
   book_id = gets.chomp.to_i
-  book_id < 1 || book_id > library.books.length && error(:create_rental, library)
+  (book_id < 1) || (book_id > library.books.length) && error(:create_rental, library)
 
   puts ' Select a person from the following list by number'
   library.list_people(true)
   person_id = gets.chomp.to_i
-  person_id < 1 || person_id > library.people.length && error(:create_rental, library)
+  (person_id < 1) || (person_id > library.people.length) && error(:create_rental, library)
 
   print 'Date: '
   date = gets.chomp
@@ -91,36 +91,43 @@ def list_rentals(library)
   choices(library)
 end
 
+def choices(library)
+  entry = "\nPelase choose an option by entring a number:
+  1 - List all books
+  2 - List all people
+  3 - Create a person
+  4 - Create a book
+  5 - Create a rental
+  6 - List all rentals for a given person id
+  7 - Exit"
+
+  puts entry
+  input = gets.chomp.to_i
+
+  case input
+  when 1
+    list_books(library)
+  when 2
+    list_people(library)
+  when 3
+    create_person(library)
+  when 4
+    create_book(library)
+  when 5
+    create_rental(library)
+  when 6
+    list_rentals(library)
+  when 7
+    # *Have a way to quit the app.
+    puts 'Thank you for using this app!'
+    abort
+  else
+    error(:choices, library)
+  end
+end
+
 def main
   library = App.new
-
-  def choices(library)
-    entry = "\nPelase choose an option by entring a number:\n1 - List all books\n2 - List all people\n3 - Create a person\n4 - Create a book\n5 - Create a rental\n6 - List all rentals for a given person id\n7 - Exit"
-    puts entry
-    input = gets.chomp.to_i
-
-    case input
-    when 1
-      list_books(library)
-    when 2
-      list_people(library)
-    when 3
-      create_person(library)
-    when 4
-      create_book(library)
-    when 5
-      create_rental(library)
-    when 6
-      list_rentals(library)
-    when 7
-      # *Have a way to quit the app.
-      puts 'Thank you for using this app!'
-      abort
-    else
-      error(:choices, library)
-    end
-  end
-
   choices(library)
 end
 
