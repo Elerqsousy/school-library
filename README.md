@@ -90,8 +90,7 @@ To run the project, execute the following command:
 Example command:
 
 ```sh
-  ruby student.rb
-  ruby teacher.rb
+  ruby main.rb
 ```
 
 <p align="right"><a href="#readme-top">back to top</a></p>
@@ -104,6 +103,12 @@ Example command:
 
 - GitHub: [@Elerqsousy](https://github.com/Elerqsousy)
 - LinkedIn: [Mahmoud (Riz) El Erqsousy](https://www.linkedin.com/in/mahmoud-rizk-elerqsousy/)
+
+👤 **Adel Guitoun**
+
+- GitHub: [@adel-gu](https://github.com/adel-gu)
+- Twitter: [@GuitounAdel](https://twitter.com/GuitounAdel)
+- LinkedIn: [adelguitoun](https://linkedin.com/in/adelguitoun)
 
 <p align="right"><a href="#readme-top">back to top</a></p>
 
