@@ -1,3 +1,4 @@
+# Document MainHelper
 module MainHelper
   def list_options
     entry = "\nPelase choose an option by entring a number:

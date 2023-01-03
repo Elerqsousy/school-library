@@ -4,6 +4,7 @@ require './teacher'
 require_relative 'create_person'
 require_relative 'person_rentals'
 
+# class Arcade
 class Arcade
   include PersonRentals
   attr_accessor :books, :people

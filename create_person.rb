@@ -1,3 +1,4 @@
+#Class Create Person
 class CreatePerson
   attr_accessor :people
 
