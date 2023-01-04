@@ -1,11 +1,13 @@
 require './arcade'
 require './main_helper'
 require_relative 'modules/book'
+require_relative 'modules/people'
 
 # Class App
 class App < Arcade
   include MainHelper
   include PreserveBook
+  include PreservePeople
 
   def create_person
     print 'Do you want to create a student (1) or a teacher (2)? [Input the number]: '
@@ -98,6 +100,7 @@ class App < Arcade
     if input > 6
       puts 'Thank you for using this App!'
       preserve_books(@books)
+      preserve_people(@people)
       exit
     else
       run_choices(input)
