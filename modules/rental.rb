@@ -4,35 +4,24 @@ require_relative './rental'
 module PreserveRental
   FILE_NAME = "./database/rental.json"
 
-  def create_rental_class(arr)
-    new_arr = []
+  def create_rental_class(arr, people, books)
     arr.each do |el|
-      new_arr << Rental.new(el["book"], el["person"], el["date"])
+      people[el["person_id"]][:data].add_rental(books[el["book_id"]], el["date"])
     end
-
-    return new_arr
   end
 
-  private :create_book_class
+  private :create_rental_class
 
   # we need to open the file
-  def fetch_rental
+  def fetch_rentals(people, books)
     File.new("#{FILE_NAME}", "w") unless File.exists?(FILE_NAME)
     file = File.read(FILE_NAME)
     data = (file.empty?)? [] : JSON.parse(file)
-    return create_rental_class(data)
+    return create_rental_class(data, people, books)
   end
 
   # we can write to the file
-  def preserve_rentals(data)
-    new_data = []
-    data.each do |d|
-      new_data << {
-        book: d.book,
-        person: d.person,
-        date: d.date
-      }
-    end
-    File.write(FILE_NAME, JSON.generate(new_data))
+  def preserve_rentals(rentals_arr)
+    File.write(FILE_NAME, JSON.generate(rentals_arr))
   end
 end

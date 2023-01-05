@@ -9,7 +9,7 @@ class Book
   def initialize(title, author)
     @title = title
     @author = author
-    @rentals = fetch_rental
+    @rentals = []
   end
 
   def add_rental(person, date)

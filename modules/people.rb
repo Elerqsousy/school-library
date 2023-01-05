@@ -1,8 +1,10 @@
 require 'json'
 require './teacher'
 require './student'
+require './modules/rental'
 
 module PreservePeople
+  include PreserveRental
   FILE_NAME = "./database/people.json"
 
   def create_people_class(arr)
@@ -24,9 +26,10 @@ module PreservePeople
   end
 
   # we can write to the file
-  def preserve_people(data)
+  def preserve_people(people, books)
     new_data = []
-    data.each do |d|
+    rentals_data = []
+    people.each_with_index do |d, i|
       new_data << {
         type: d[:type],
         data: {
@@ -36,7 +39,16 @@ module PreservePeople
           specialization: d[:type] == "Teacher" ? d[:data].specialization : nil,
         }
       }
+      d[:data].rentals.each do |rental|
+        rentals_data << {
+          book_id: books.find_index(rental.book),
+          date: rental.date,
+          person_id: i
+        }
+      end
     end
+
+    preserve_rentals(rentals_data)
     File.write(FILE_NAME, JSON.generate(new_data))
   end
 end

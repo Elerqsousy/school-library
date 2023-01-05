@@ -13,7 +13,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
-    @rentals = fetch_rental
+    @rentals = []
   end
 
   def add_rental(book, date)

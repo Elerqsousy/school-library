@@ -100,7 +100,7 @@ class App < Arcade
     if input > 6
       puts 'Thank you for using this App!'
       preserve_books(@books)
-      preserve_people(@people)
+      preserve_people(@people, @books)
       exit
     else
       run_choices(input)

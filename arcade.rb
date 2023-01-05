@@ -4,17 +4,20 @@ require './teacher'
 require_relative 'create_person'
 require_relative 'person_rentals'
 require_relative './modules/book'
+require './modules/rental'
 
 # class Arcade
 class Arcade
   include PersonRentals
   include PreserveBook
+  include PreserveRental
   attr_accessor :books, :people
 
   def initialize
     @person = CreatePerson.new
     @books = fetch_books
     @people = @person.people
+    fetch_rentals(@people, @books)
   end
 
   def list_books(with_index)
