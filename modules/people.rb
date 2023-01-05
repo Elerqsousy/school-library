@@ -1,3 +1,5 @@
+# frozen-string-literal: true
+
 require 'json'
 require './teacher'
 require './student'
@@ -6,6 +8,7 @@ require './modules/rental'
 module PreservePeople
   include PreserveRental
   FILE_NAME = './database/people.json'
+  FILE_NAME.freeze
 
   def create_people_class(arr)
     new_arr = []

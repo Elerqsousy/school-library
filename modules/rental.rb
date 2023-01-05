@@ -1,8 +1,11 @@
+# frozen-string-literal: true
+
 require 'json'
 require_relative './rental'
 
 module PreserveRental
   FILE_NAME = './database/rental.json'
+  FILE_NAME.freeze
 
   def create_rental_class(arr, people, books)
     arr.each do |el|
