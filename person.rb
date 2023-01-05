@@ -1,7 +1,9 @@
 require './nameable'
 require './book'
+require './modules/rental'
 # Class Person
 class Person < Nameable
+  include PreserveRental
   attr_accessor :name, :age, :rentals, :parent_permission
   attr_reader :id
 
@@ -11,7 +13,7 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
-    @rentals = []
+    @rentals = fetch_rental
   end
 
   def add_rental(book, date)
