@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './arcade'
 require './main_helper'
 require_relative 'modules/book'

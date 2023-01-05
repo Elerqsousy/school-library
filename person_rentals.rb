@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Module PersonRentals
 module PersonRentals
   def find_person(person_id, arr)

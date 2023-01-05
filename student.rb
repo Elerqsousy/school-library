@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require './person'
 
 # Class Student inhereting from Person Class

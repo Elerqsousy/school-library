@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'json'
 require './teacher'
 require './student'
@@ -5,12 +7,21 @@ require './modules/rental'
 
 module PreservePeople
   include PreserveRental
-  FILE_NAME = "./database/people.json"
+  FILE_NAME = './database/people.json'
 
   def create_people_class(arr)
     new_arr = []
     arr.each do |el|
-      el["type"] == 'Teacher' ? new_arr << {type: 'Teacher', data: Teacher.new(el["data"]["age"], el["data"]["name"], el["data"]["specialization"])} : new_arr << {type: 'Student', data: Student.new(el["data"]["age"], el["data"]["name"], el["data"]["parent_permission"])}
+      new_arr << if el['type'] == 'Teacher'
+                   { type: 'Teacher',
+                     data: Teacher.new(el['data']['age'], el['data']['name'],
+                                       el['data']['specialization']) }
+                 else
+                   { type: 'Student',
+                     data: Student.new(
+                       el['data']['age'], el['data']['name'], el['data']['parent_permission']
+                     ) }
+                 end
     end
     new_arr
   end
@@ -19,10 +30,10 @@ module PreservePeople
 
   # we need to open the file
   def fetch_poeple
-    File.new("#{FILE_NAME}", "w") unless File.exists?(FILE_NAME)
+    File.new(FILE_NAME.to_s, 'w') unless File.exist?(FILE_NAME)
     file = File.read(FILE_NAME)
-    data = (file.empty?)? [] : JSON.parse(file)
-    return create_people_class(data)
+    data = file.empty? ? [] : JSON.parse(file)
+    create_people_class(data)
   end
 
   # we can write to the file
@@ -36,7 +47,7 @@ module PreservePeople
           name: d[:data].name,
           age: d[:data].age,
           parent_permission: d[:data].parent_permission,
-          specialization: d[:type] == "Teacher" ? d[:data].specialization : nil,
+          specialization: d[:type] == 'Teacher' ? d[:data].specialization : nil
         }
       }
       d[:data].rentals.each do |rental|

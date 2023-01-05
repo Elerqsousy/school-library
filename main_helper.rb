@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Document MainHelper
 module MainHelper
   def list_options
