@@ -1,8 +1,10 @@
 require './nameable'
 require './book'
+require './modules/rental'
 # Class Person
 class Person < Nameable
-  attr_accessor :name, :age, :rentals
+  include PreserveRental
+  attr_accessor :name, :age, :rentals, :parent_permission
   attr_reader :id
 
   def initialize(age, name, parent_permission)
