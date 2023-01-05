@@ -5,7 +5,7 @@ book = Book.new("Game Of Thrones", "Ahmed")
 person = Person.new(22, "Mike", true)
 
 describe Person do
-   context "When testing the Book class" do
+   context "When testing the Person class" do
       it "The add_rental method should add the rental of current person to rentals" do
          person.add_rental(book, "05-01-2023")
          expect(person.rentals.length).to eq 1
