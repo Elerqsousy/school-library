@@ -2,7 +2,7 @@ require 'json'
 require_relative './book'
 
 module PreserveBook
-  FILE_NAME = './database/book.json'
+  FILE_NAME = './database/book.json'.freeze
 
   def create_book_class(arr)
     new_arr = []
