@@ -2,26 +2,25 @@ require 'json'
 require_relative './book'
 
 module PreserveBook
-  FILE_NAME = "./database/book.json"
+  FILE_NAME = './database/book.json'
 
-  #
   def create_book_class(arr)
     new_arr = []
     arr.each do |el|
-      new_arr << Book.new(el["title"], el["author"])
+      new_arr << Book.new(el['title'], el['author'])
     end
 
-    return new_arr
+    new_arr
   end
 
   private :create_book_class
 
   # we need to open the file
   def fetch_books
-    File.new("#{FILE_NAME}", "w") unless File.exists?(FILE_NAME)
+    File.new(FILE_NAME.to_s, 'w') unless File.exist?(FILE_NAME)
     file = File.read(FILE_NAME)
-    data = (file.empty?)? [] : JSON.parse(file)
-    return create_book_class(data)
+    data = file.empty? ? [] : JSON.parse(file)
+    create_book_class(data)
   end
 
   # we can write to the file
