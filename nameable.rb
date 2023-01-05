@@ -7,28 +7,28 @@ end
 
 # Class Decorator inhereting from Nameable
 class Decorator < Nameable
-  attr_accessor :nameable
+  attr_accessor :name
 
-  def initialize(nameable)
+  def initialize(name)
     super()
-    @nameable = nameable
+    @name = name
   end
 
   def correct_name
-    @nameable.correct_name
+    @name.correct_name
   end
 end
 
 # Class CapitalizeDecorator inhereting from Decorator
 class CapitalizeDecorator < Decorator
   def correct_name
-    @nameable.correct_name.capitalize
+    @name.correct_name.capitalize
   end
 end
 
 # Class TrimmerDecorator inhereting from Decorator
 class TrimmerDecorator < Decorator
   def correct_name
-    @nameable.correct_name[0..9]
+    @name.correct_name[0..9]
   end
 end
