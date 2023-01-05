@@ -2,8 +2,7 @@ require 'json'
 require_relative './rental'
 
 module PreserveRental
-  FILE_NAME = './database/rental.json'
-  FILE_NAME.freeze
+  FILE_NAME = './database/rental.json'.freeze
 
   def create_rental_class(arr, people, books)
     arr.each do |el|

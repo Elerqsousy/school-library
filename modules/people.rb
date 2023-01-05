@@ -5,8 +5,7 @@ require './modules/rental'
 
 module PreservePeople
   include PreserveRental
-  FILE_NAME = './database/people.json'
-  FILE_NAME.freeze
+  FILE_NAME = './database/people.json'.freeze
 
   def create_people_class(arr)
     new_arr = []
